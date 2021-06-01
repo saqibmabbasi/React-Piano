@@ -5,38 +5,49 @@ export default class PianoKey extends React.Component {
     //audioFile: string="";
 
     constructor(props) {
-       super(props);
+        super(props);
         // this.state = { };
 
-        //this.audioFile
-
         this.handleClick = this.handleClick.bind(this);
-        this.handleKeyDown = this.handleKeyDown.bind(this);
+        // this.handleKeyDown = this.handleKeyDown.bind(this);
+        
+        // const noteAudio = document.getElementById(this.props.note)
+        // const pianokey = document.getElementById("Key-".concat(this.props.note))
+        // console.log('playNote ', this.props.note, noteAudio, pianokey);
     }
 
 
 
     handleClick(event) {
-        this.playNote();
+        const noteAudio = document.getElementById(this.props.note)
+        const pianokey = document.getElementById("Key-".concat(this.props.note))
+        console.log('playNote ', this.props.note, noteAudio, pianokey);
+
+        this.playNote(noteAudio,pianokey);
     }
 
 
     handleKeyDown(event) {
-        console.log("handle Keydown", event, this.props.keystroke);
-        this.playNote();
+        console.log("handle Keydown", event /*, this.props.keystroke*/);
+
+        // const noteAudio = document.getElementById(this.props.note)
+        // const pianokey = document.getElementById("Key-".concat(this.props.note))
+        // console.log('playNote ', this.props.note, noteAudio, pianokey);
+
+        // this.playNote(noteAudio,pianokey);
     }
 
-    playNote() {
+
+
+    playNote(noteAudio,pianokey) {
         // console.log(this.props.note);
-        const noteAudio = document.getElementById(this.props.note)
-        const pianokey = document.getElementById("Key-".concat(this.props.note))
-        console.log('playNote ', this.props.note, noteAudio, pianokey);
         noteAudio.currentTime = 0
         noteAudio.play()
         pianokey.classList.add('active')
         noteAudio.addEventListener('ended', () => {
             pianokey.classList.remove('active')
         })
+    
     }
 
 
@@ -56,22 +67,3 @@ export default class PianoKey extends React.Component {
         );
     }
 }
-
-
-
-
-
-//export default function PianoKey(props) {
-//     return (
-//         <div id={props.id} 
-//             data-note={props.note} 
-//             className={props.className} 
-//             onClick={props.onClick}
-//             keystroke={props.keystroke}
-//             onKeyDown={props.onKeyDown}
-//             tabIndex="0"
-//             >
-
-//             </div>
-//     );
-// }

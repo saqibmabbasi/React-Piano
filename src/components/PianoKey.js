@@ -6,14 +6,9 @@ export default class PianoKey extends React.Component {
 
     constructor(props) {
         super(props);
-        // this.state = { };
 
         this.handleClick = this.handleClick.bind(this);
-        // this.handleKeyDown = this.handleKeyDown.bind(this);
-        
-        // const noteAudio = document.getElementById(this.props.note)
-        // const pianokey = document.getElementById("Key-".concat(this.props.note))
-        // console.log('playNote ', this.props.note, noteAudio, pianokey);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
     }
 
 
@@ -21,26 +16,75 @@ export default class PianoKey extends React.Component {
     handleClick(event) {
         const noteAudio = document.getElementById(this.props.note)
         const pianokey = document.getElementById("Key-".concat(this.props.note))
-        console.log('playNote ', this.props.note, noteAudio, pianokey);
-
         this.playNote(noteAudio,pianokey);
     }
 
 
     handleKeyDown(event) {
-        console.log("handle Keydown", event /*, this.props.keystroke*/);
+        let note='';
+        switch(event.key) {
+            case 'z':
+            case 'Z':
+                note = 'C';
+                break;
+            case 'x':
+            case 'X':
+                note = 'D';
+                break;
+            case 'c':
+            case 'C':
+                note = 'E';
+                break;
+            case 'v':
+            case 'V':
+                note = 'F';
+                break;
+            case 'b':
+            case 'B':
+                note = 'G';
+                break;
+            case 'n':
+            case 'N':
+                note = 'A';
+                break;
+            case 'm':
+            case 'M':
+                note = 'B';
+                break;
+            case 's':
+            case 'S':
+                note = 'Db';
+                break;
+            case 'd':
+            case 'D':
+                note = 'Eb';
+                break;
+            case 'g':
+            case 'G':
+                note = 'Gb';
+                break;
+            case 'h':
+            case 'H':
+                note = 'Ab';
+                break;
+            case 'j':
+            case 'J':
+                note = 'Bb';
+                break;
+            default:
+                // code block
+        }
 
-        // const noteAudio = document.getElementById(this.props.note)
-        // const pianokey = document.getElementById("Key-".concat(this.props.note))
-        // console.log('playNote ', this.props.note, noteAudio, pianokey);
-
-        // this.playNote(noteAudio,pianokey);
+        if (note !== '') {
+            const noteAudio = document.getElementById(note)
+            const pianokey = document.getElementById("Key-".concat(note))
+            this.playNote(noteAudio,pianokey);
+        }
     }
 
 
 
     playNote(noteAudio,pianokey) {
-        // console.log(this.props.note);
         noteAudio.currentTime = 0
         noteAudio.play()
         pianokey.classList.add('active')

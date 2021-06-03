@@ -27,6 +27,69 @@ export default class Piano extends React.Component {
 
         if ((whiteKeyIndex > -1) || (blackKeyIndex > -1)) {
             keyCode = key.key;
+
+            //let note='';
+            switch(key.key) {
+                case 'z':
+                case 'Z':
+                    note = 'C';
+                    break;
+                case 'x':
+                case 'X':
+                    note = 'D';
+                    break;
+                case 'c':
+                case 'C':
+                    note = 'E';
+                    break;
+                case 'v':
+                case 'V':
+                    note = 'F';
+                    break;
+                case 'b':
+                case 'B':
+                    note = 'G';
+                    break;
+                case 'n':
+                case 'N':
+                    note = 'A';
+                    break;
+                case 'm':
+                case 'M':
+                    note = 'B';
+                    break;
+                case 's':
+                case 'S':
+                    note = 'Db';
+                    break;
+                case 'd':
+                case 'D':
+                    note = 'Eb';
+                    break;
+                case 'g':
+                case 'G':
+                    note = 'Gb';
+                    break;
+                case 'h':
+                case 'H':
+                    note = 'Ab';
+                    break;
+                case 'j':
+                case 'J':
+                    note = 'Bb';
+                    break;
+                default:
+                    // code block
+            }
+    
+            // if (note !== '') {
+            //     const noteAudio = document.getElementById(note)
+            //     const pianokey = document.getElementById("Key-".concat(note))
+            //     this.playNote(noteAudio,pianokey);
+            // }
+
+
+
             console.log({key}, whiteKeyIndex, blackKeyIndex, keyCode);
         }
             
